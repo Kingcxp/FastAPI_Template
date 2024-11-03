@@ -1,0 +1,26 @@
+# Cache and editor files
+__pycache__/
+.vs/
+.idea/
+.vscode/
+.DS_Store
+
+# All data and their backups should not be tracked
+*.sqlite*
+*.db*
+
+# Test data should not leak
+match/
+
+# Generated server config
+config_template.xls*
+data/
+
+# Virtual environment
+serverenv/
+
+# Dotenv file
+.env
+
+# temp csv file
+tmp.csv
