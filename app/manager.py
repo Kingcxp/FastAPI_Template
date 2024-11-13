@@ -146,7 +146,7 @@ class PluginManager:
             if (router := getattr(module, "__router__", None)) is None:
                 raise RuntimeError(
                     f"模块 {module.__name__} 未正确作为插件加载! "
-                    "请确认 `__blueprint__` 变量的值是否正确."
+                    "请确认 `__router__` 变量的值是否正确."
                 )
             self.app.include_router(router=router)
             console.log(

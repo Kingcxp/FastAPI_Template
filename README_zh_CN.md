@@ -8,15 +8,15 @@
 (你需要先行安装 `python` 和 `git`)
 ```sh
 # 克隆这个项目
-git clone https://git.nju.edu.cn/gh_user/project_name.git
+git clone https://github.com/gh_user/project_name.git
 cd project_name
 # 创建虚拟环境
 python3 -m venv serverenv
 # 启动虚拟环境
 # Bash
-source serverenv\Scripts\activate
+source serverenv/bin/activate
 # Fish
-source serverenv/Scripts/activate.fish
+source serverenv/bin/activate.fish
 # Powershell
 .\serverenv\Scripts\Activate.ps1
 # 安装项目依赖

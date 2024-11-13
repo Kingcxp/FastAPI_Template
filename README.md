@@ -8,15 +8,15 @@ Contents of project description
 (You should have `python` and `git` installed first)
 ```sh
 # Clone this project
-git clone https://git.nju.edu.cn/gh_user/project_name.git
+git clone https://github.com/gh_user/project_name.git
 cd project_name
 # create a virtual environment
 python3 -m venv serverenv
 # activate the virtual environment
 # Bash
-source serverenv\Scripts\activate
+source serverenv/bin/activate
 # Fish
-source serverenv/Scripts/activate.fish
+source serverenv/bin/activate.fish
 # Powershell
 .\serverenv\Scripts\Activate.ps1
 # Install dependencies
@@ -34,4 +34,4 @@ EMAIL_HOST="smtp.example.com"
 ```
 
 ## Contribute
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcomed. For major changes, please open an issue first to discuss what you would like to change.
