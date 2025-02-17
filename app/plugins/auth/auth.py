@@ -1,4 +1,3 @@
-import os
 import time
 
 from math import ceil
@@ -136,54 +135,3 @@ async def login(item: LoginItem, request: Request, db: AsyncSession = Depends(ge
         }, status_code=status.HTTP_400_BAD_REQUEST)
     request.session["uid"] = try_fetch.uid
     return JSONResponse(content={}, status_code=status.HTTP_200_OK)
-
-
-@router.get("/userdata/{which}")
-async def fetch_userdata(which: str, request: Request, db: AsyncSession = Depends(get_db)) -> JSONResponse:
-    """
-    获取已登录用户的信息
-
-    通过路由传入字符串，表示需要获取的内容名称，总共有如下几种：
-    uid:        uid
-    name:       name
-    email:      email
-    identity:   itentity
-    teamname:   teamname
-    contact:    contact
-    leaders:    leaders
-    members:    members
-    award:      award
-    all:        除 token 和 award 外全部字段
-    """
-    if (uid := request.session.get("uid")) is None:
-        return JSONResponse(content={
-            "msg": "您尚未登录！"
-        }, status_code=status.HTTP_400_BAD_REQUEST)
-    fetch_result = await crud.get_user(db, uid)
-    if fetch_result is None:
-        return JSONResponse({
-            "msg": "用户不存在！"
-        }, status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    match which:
-        case "uid":
-            return JSONResponse(content={
-                "uid": fetch_result.uid
-            }, status_code=status.HTTP_200_OK)
-        case "name":
-            return JSONResponse(content={
-                "name": fetch_result.name
-            }, status_code=status.HTTP_200_OK)
-        case "email":
-            return JSONResponse(content={
-                "email": fetch_result.email
-            }, status_code=status.HTTP_200_OK)
-        case "all":
-            return JSONResponse(content={
-                "uid": fetch_result.uid,
-                "name": fetch_result.name,
-                "email": fetch_result.email,
-            }, status_code=status.HTTP_200_OK)
-        case _:
-            return JSONResponse(content={
-                "msg": "未找到该存储字段！"
-            }, status_code=status.HTTP_400_BAD_REQUEST)
